@@ -10,7 +10,7 @@ blog project with django **http://blogtest-peymangolkar.fandogh.cloud/**
 - tags
 - search 
 
-## framework and libraries used:
+## framework and libraries
 - django
 - django-allauth
 - django-jazzminn
