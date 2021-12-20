@@ -1,0 +1,44 @@
+{% extends 'posts/base.html' %}
+{% load extra_filters %}
+{% block title %}{{ block.super }} - posts{% endblock title %}
+
+{% block content %}
+<div class='container'>
+    {% if tag %}
+        <h2>posts related to : {{tag.name}}</h2>
+    {% endif %}
+        
+    
+    {% if request.path|endswith:'search'%}
+        {% if search %}
+            <h2 class='mt-2 text-danger'> results for : {{searched}}</h2>
+        {% else %}
+            <h2 class='mt-2 text-danger text-center'>No results for : {{searched}}</h2>
+        {% endif %}
+    {% endif %}
+        
+            
+        <div class="row">
+        {% for post in posts %}
+                <div class="card col-4 m-2" style="width: 18rem;">
+                    <img src="{{post.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">✍ {{ post.author.username }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">👁 {{post.get_visits}} ❤ {{post.number_of_likes}}</h6>
+                        <p class="card-text">{{ post.description|truncatewords:15 }}</p>
+                        <a href="{% url 'post' post.slug %}" class="btn btn-primary">Read Post</a>
+                    </div>
+                      <ul class="list-group list-group-flush">
+                        {% if post.tags %}
+                                <li class="list-group-item">{% for post_tag in post.tags.all %}<a class='m-2 btn btn-outline-info' href='{% url 'posts_tag' post_tag.slug %}'>{{post_tag.name}} </a>{% endfor %}</li>
+                                {% comment %} {{ post.tags.all|join:', ' }} {% endcomment %}
+                        {% endif %}
+                      </ul>
+                </div>
+        {% endfor %}
+        </div>
+    <hr>
+    {% include 'posts/includes/pagination.html' with page=posts %}
+</div>
+{% endblock content %}

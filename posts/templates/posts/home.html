@@ -1,0 +1,33 @@
+{% extends 'posts/base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+    <div class='start container text-center bg-dark p-5 text-white'>
+        <h2>welcome to my blog</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias, explicabo. Laborum, inventore totam et impedit nostrum eum odio, deserunt officiis expedita soluta sint possimus suscipit assumenda voluptatibus in quidem illo nisi! Cum perferendis saepe, porro vitae error quam ipsum quisquam. Maxime, sit hic earum libero facere dolorem quo eum perspiciatis repudiandae cupiditate, sed nam eos praesentium quisquam, veritatis deserunt. Enim nemo cumque illum, maiores, voluptate ullam quas iste necessitatibus praesentium eveniet a natus, voluptates quisquam quasi nostrum quia repellat porro. Perspiciatis et natus expedita rem labore saepe beatae laudantium earum, totam eius commodi eaque iusto reiciendis non explicabo harum magni.</p>
+        
+    </div>
+	<div class='container'>
+	<h2 class='my-5 fs-1 text-danger'>Latest Posts:</h2>
+		<div class="row justify-content-center align-items-center ms-0 mt-3">
+			{% for post in posts %}
+				<div class="card  mb-3 w-100 h-50">
+					<img src="{{post.image.url}}" class="card-img-top card-image" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">{{post.title}}</h5>
+					<p class="card-text">{{ post.description }}</p>
+					<p class="card-text"><small class="text-muted">✍ {{post.author}} | 👁 {{post.get_visits}}</small></p>
+					<a class='btn btn-primary' href="{% url 'post' post.slug  %}">Read More</a>
+				</div>
+	            <ul class="list-group list-group-flush">
+                        {% if post.tags %}
+                                <li class="list-group-item">{% for post_tag in post.tags.all %}<a class='m-2 btn btn-outline-info' href='{% url 'posts_tag' post_tag.slug %}'>{{post_tag.name}} </a>{% endfor %}</li>
+                                {% comment %} {{ post.tags.all|join:', ' }} {% endcomment %}
+                        {% endif %}
+				</ul>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock content %}
