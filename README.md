@@ -1,5 +1,5 @@
 # blog-django
-blog project with django
+blog project with django **http://blogtest-peymangolkar.fandogh.cloud/**
 
 ## features
 - view counter
