@@ -15,7 +15,7 @@ class IP(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=50)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True , allow_unicode=True)
     author = models.ForeignKey(User , on_delete=models.CASCADE , related_name='post')
     description = models.CharField(max_length=100)
     rate = GenericRelation(Rating)
