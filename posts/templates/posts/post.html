@@ -1,6 +1,6 @@
 {% extends 'posts/base.html' %} {% load static %} {% load crispy_forms_tags %}
 {% load ratings %} {% block title %} {{ super }} {{post.title}} {% endblock %}
-{% block meta %}n
+{% block meta %}
 <link
   rel="stylesheet"
   href="{% static 'star-ratings/css/star-ratings.css' %}"
