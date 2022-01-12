@@ -9,33 +9,43 @@
 <div
   class="container d-flex align-items-center justify-content-center flex-column"
 >
-  <img class="img-fluid rounded w-75" src="{{post.image.url}}" alt="photo" />
-  <hr />
-  <p class="fw-bold">
-    ✍ {{post.author.username}} | 👁 {{post.get_visits}} | 🕒 {{ post.pub_date }}
-    | ❤ {{ post.number_of_likes }} | {% ratings post %}
-  </p>
-  <hr />
 
-  {% if user.is_authenticated %}
-  <form action="{% url 'like' post.slug %}" method="post">
-    {% csrf_token %} 
-    {% if post_is_liked %}
-    <button type="submit" class="btn btn-outline-primary">
-      &#128078; UnLike
-    </button>
-    {% else %}
-    <button type="submit" class="btn btn-outline-primary">
-      &#128077; Like
-    </button>
-    {% endif %}
-  </form>
-  {% else %}
-  <p class="text-muted">sign up to like this article</p>
-  {% endif %}
-
-  <hr />
-  <p>{{ post.body }}</p>
+  <div class="post-content">
+    <div class="card post-card mb-3">
+        <img src="{{post.image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">{{post.title}}</h5>
+          <p class="fw-bold">
+            ✍ {{post.author |capfirst}} | 👁 {{visits}} | 🕒 {{post.pub_date}}
+            | ❤ {{number_of_likes}} | {% ratings post %}
+          </p>
+          {% if user.is_authenticated %}
+          <form action="{% url 'like' post.slug %}" method="post">
+            {% csrf_token %} 
+            {% if post_is_liked %}
+            <button type="submit" class="btn btn-outline-primary">
+              &#128078; disLike
+            </button>
+            {% else %}
+            <button type="submit" class="btn btn-outline-primary">
+              &#128077; Like
+            </button>
+            {% endif %}
+          </form>
+          {% else %}
+          <p class="text-muted">sign up to like this article</p>
+          <hr />
+          {% endif %}
+          <p class="card-text">{{post.body}}</p>
+          <ul class="list-group list-group-flush">
+            <p class="fw_bold">tags:</p>
+                    <li class="list-group-item">{% for post_tag in post.tags.all %}<a class='m-2 btn btn-outline-primary' href='{% url 'posts_tag' post_tag.slug %}'>{{post_tag.name}} </a>{% endfor %}</li>
+                    {% comment %} {{ post.tags.all|join:', ' }} {% endcomment %}
+          </ul>
+        </div>
+      </div>
+      
+</div>
   <hr />
   <div class="mt-3 mb-3 text-center">
     <div>

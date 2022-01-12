@@ -57,3 +57,11 @@
   height: 25px !important;
   resize: none;
 }
+/* ================ */
+.post-content{
+  max-width: 90%;
+}
+.post-card{
+  border-radius: 25px;
+  padding-bottom: 20px;
+}
