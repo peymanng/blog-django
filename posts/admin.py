@@ -1,8 +1,7 @@
 from django.contrib import admin
-from django.contrib.admin.decorators import action, register
 from django.http import HttpResponse
 from django.core import serializers
-from .models import Post , Comment  , IP
+from .models import Category, Post , Comment  , IP
 
 # ** ---------------------Actions--------------------
 @admin.action(description='export selected posts as json')
@@ -27,7 +26,7 @@ def inactive_comments(modeladmin , request , queryset):
 # ** -----------------register------------------------
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title' , 'slug' , 'get_visits' , 'number_of_likes' , 'tag_list' , 'pub_date')
+    list_display = ('title' , 'get_categories', 'slug' , 'get_visits' , 'number_of_likes' , 'tag_list' , 'pub_date')
     prepopulated_fields = {'slug' : ('title' ,)}
     actions=[rate_to_five , export_as_json]
 
@@ -45,5 +44,9 @@ class CommentAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'body')
     list_editable = ('active',)
     actions = [inactive_comments]
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title' , 'slug')
 
 admin.site.register(IP)

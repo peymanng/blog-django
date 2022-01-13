@@ -1,4 +1,4 @@
-from django.shortcuts import get_list_or_404, render
+from django.shortcuts import render
 from posts.models import Post
 from django.db.models import Q
 

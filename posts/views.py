@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .models import Post , Comment
 from django.core.paginator import Paginator
 from .forms import CommentForm
-from django.contrib.auth.decorators import login_required
 from taggit.models import Tag
 # from django.views.decorators.http import require_safe
 # Create your views here.
