@@ -47,15 +47,14 @@
 /*------------------------------------- */
 .comment{
   border-radius: 15px;
-  box-shadow: 0 0 5px rgb(104, 104, 104)
 }
 .replay{
   border-radius: 15px;
-  padding: 20px;
+  padding: 10px;
 }
 .comment-form{
-  height: 25px !important;
-  resize: none;
+  height: 35px !important;
+  width: 500px !important;
 }
 /* ================ */
 .post-content{
