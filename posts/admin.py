@@ -48,5 +48,6 @@ class CommentAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title' , 'slug')
+    prepopulated_fields = {"slug": ("title",)}
 
 admin.site.register(IP)
