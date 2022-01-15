@@ -29,17 +29,17 @@
                         <p class="card-text">{{ post.description|truncatewords:15 }}</p>
                         <a href="{% url 'post' post.slug %}" class="btn btn-primary">Read Post</a>
                     </div>
-                        <ul class="list-group list-group-flush">
+                    <div class="list-group list-group-flush">
                             <p class="fw-bold mt-2">category:</p>
                             
                             {% for cat in post.category.all %}
-                            <li class="list-group-item"><a class="m-2 btn btn-sm btn-outline-info" href="{% url 'category' cat.slug %}">{{cat.title}}</a></li>
+                            <a class="m-2 btn btn-sm btn-dark" href="{% url 'category' cat.slug %}">{{cat.title}}</a>
                             {% endfor %}
-                        </ul>
+                    </div>
                       <ul class="list-group list-group-flush">
                         <p class="fw-bold mt-2">tags:</p>
                         {% if post.tags %}
-                                <li class="list-group-item">{% for post_tag in post.tags.all %}<a class='m-2 btn btn-sm btn-outline-info' href='{% url 'posts_tag' post_tag.slug %}'>{{post_tag.name}} </a>{% endfor %}</li>
+                                <li class="list-group-item">{% for post_tag in post.tags.all %}<a class='m-2 btn btn-sm btn-warning' href='{% url 'posts_tag' post_tag.slug %}'>{{post_tag.name}} </a>{% endfor %}</li>
                                 {% comment %} {{ post.tags.all|join:', ' }} {% endcomment %}
                         {% endif %}
                       </ul>
