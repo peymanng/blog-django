@@ -29,8 +29,9 @@ def categories(request):
     return render(request , 'posts/categories.html' , {'categories' : categories})
 
 
-def category(request):
-    pass
+def category(request , category_slug):
+    posts = Post.objects.filter(category__title__icontains=category_slug)
+    return render(request , 'posts/posts.html' , {'posts' : posts})
 
 
 def post(request , post):
