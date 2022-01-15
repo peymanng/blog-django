@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Post , Comment
+from .models import Category, Post , Comment
 from django.core.paginator import Paginator
 from .forms import CommentForm
 from taggit.models import Tag
@@ -22,6 +22,15 @@ def posts(request , tag_slug=None):
         context = {'posts' : page_obj , 'tag' : tag}
 
         return render(request , 'posts/posts.html' , context)
+
+
+def categories(request):
+    categories = Category.objects.all()
+    return render(request , 'posts/categories.html' , {'categories' : categories})
+
+
+def category(request):
+    pass
 
 
 def post(request , post):

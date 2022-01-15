@@ -1,0 +1,27 @@
+{% extends 'posts/base.html' %}
+
+
+{% block title %}
+    All Categories
+{% endblock title %}
+    
+
+{% block content %}
+ 
+<div class="container">
+    <div class="row ">
+        <div class="col justify-content-center">
+            {% for category in categories %}
+             <div class="card text-white bg-dark mb-3">
+                 <div class="card-header text-center">{{category.title}}</div>
+                 <div class="card-body d-flex justify-content-center">
+                    <a href="{% url 'category' category.slug %}" class="btn btn-outline-light text-white card-title">GO</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+     
+{% endblock content %}
+    
