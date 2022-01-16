@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # *captcha
     'captcha',
     # *ckeditor
+    'ckeditor_uploader',
     'ckeditor'
 ]
 
