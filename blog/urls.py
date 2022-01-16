@@ -7,10 +7,13 @@ from .views import index , contact_us_view , search
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # *Third-Party urls
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('accounts/', include('allauth.urls')),
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
+    # *My apps urls
     path('posts/', include('posts.urls')),
     path('' , index , name='home'),
     path('contact-us' , contact_us_view , name='contact-us'),
     path('search' , search , name='search'),
-    path('ratings/', include('star_ratings.urls', namespace='ratings')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

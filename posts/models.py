@@ -4,6 +4,7 @@ from star_ratings.models import Rating
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from taggit.managers import TaggableManager
+from ckeditor_uploader.fields import RichTextUploadingField 
 User = get_user_model()
 
 class IP(models.Model):
@@ -32,7 +33,7 @@ class Post(models.Model):
     author = models.ForeignKey(User , on_delete=models.CASCADE , related_name='post')
     description = models.CharField(max_length=100)
     rate = GenericRelation(Rating)
-    body = models.TextField()
+    body = RichTextUploadingField()
     pub_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='blogpost_like' , blank=True)
     image = models.ImageField(upload_to='posts/')

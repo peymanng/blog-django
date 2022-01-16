@@ -43,8 +43,10 @@ INSTALLED_APPS = [
     'taggit',
     # *django-star-rating
     'star_ratings',
-    # captcha
-    'captcha'
+    # *captcha
+    'captcha',
+    # *ckeditor
+    'ckeditor'
 ]
 
 SITE_ID = 2
@@ -185,6 +187,15 @@ JAZZMIN_UI_TWEAKS = {
     "dark_mode_theme": "darkly",
 }
 
-# reCaptha
+# **reCaptha
 RECAPTCHA_PUBLIC_KEY = "6LeI5RYeAAAAAKFDlY2X3YOeW7u8f3hOBAPI8CJO"
 RECAPTCHA_PRIVATE_KEY = "6LeI5RYeAAAAAH-dFePozy3pb-JyZPaXle7rvF8H"
+
+# ** ckeditor
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}
