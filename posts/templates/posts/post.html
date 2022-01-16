@@ -55,7 +55,9 @@
       <h2>Add a new comment</h2>
       <form class="d-flex align-items-center flex-column" action="" method="POST">
         {% csrf_token %} 
-        {{ comment_form|crispy }}
+        <p>text:</p>
+        <div class="mb-2">{{ comment_form.body }}</div>
+        {{ comment_form.captcha }}
         <p>
           <input
             class="btn btn-dark mt-3"

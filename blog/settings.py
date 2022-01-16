@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'taggit',
     # *django-star-rating
     'star_ratings',
+    # captcha
+    'captcha'
 ]
 
 SITE_ID = 2
@@ -182,3 +184,7 @@ JAZZMIN_UI_TWEAKS = {
     "theme": "flatly",
     "dark_mode_theme": "darkly",
 }
+
+# reCaptha
+RECAPTCHA_PUBLIC_KEY = "6LeI5RYeAAAAAKFDlY2X3YOeW7u8f3hOBAPI8CJO"
+RECAPTCHA_PRIVATE_KEY = "6LeI5RYeAAAAAH-dFePozy3pb-JyZPaXle7rvF8H"
