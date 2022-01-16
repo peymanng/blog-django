@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="stylesheet" href="{% static 'posts/style.css' %}">
 </head>
-<body>
+<body class="bg-light bg-gradient">
 
 
 </div>
@@ -45,7 +45,7 @@
                     {% if request.user.is_authenticated %}
                         <a href="{% url 'account_logout' %}"  class='btn btn-outline-warning' >Log Out</a>
                     {% else %}
-                        <a href='{% provider_login_url 'github' %}' class="btn btn-outline-light me-2">Login With Github</a>
+                        <a href='{% url "account_login" %}' class="btn btn-outline-light me-2">Login</a>
                         <a href="{% url 'account_signup' %}" class="btn btn-warning">Sign-up</a>
                     {% endif %}
                 </div>
