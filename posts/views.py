@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, redirect, render , get_list_or_404
 from .models import Category, Post , Comment
 from django.core.paginator import Paginator
 from .forms import CommentForm
@@ -30,7 +30,7 @@ def categories(request):
 
 
 def category(request , category_slug):
-    posts = Post.objects.filter(category__title__icontains=category_slug)
+    posts = get_list_or_404(Post,category__title__icontains=category_slug)
     return render(request , 'posts/posts.html' , {'posts' : posts})
 
 
