@@ -1,0 +1,33 @@
+.form-container form{
+    margin-top: 25px;
+    background: rgb(46, 46, 46);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgb(255, 208, 0);
+}
+
+.form-container label{
+    font-weight: bold;
+}
+
+.form-container span{
+    color: darkkhaki;
+}
+
+.form-container textarea{
+    width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #fff;
+}
+
+.form-container p{
+    color: white;
+}
+
+.form-container input{
+    border: none;
+    border-bottom: 1px solid #ffc107;
+    border-radius: 5px;
+    margin-left: 20px;
+    box-shadow: 0 0 15px #9b906e;
+}
