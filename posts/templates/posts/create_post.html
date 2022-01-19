@@ -1,0 +1,32 @@
+{% extends 'posts/base.html' %}
+{% load static %}
+
+{% block title %}
+    create post
+{% endblock title %}
+
+{% block meta %}
+    <link rel="stylesheet" href="{% static 'posts/create_post.css' %}">
+{% endblock meta %}
+    
+    
+
+{% block content %}
+    <div class="container form-container">
+        <form action="{% url 'create-post' %}" method="POST" enctype="multipart/form-data" class="d-flex flex-column text-center justify-content-center">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary">Create Post</button>
+        </form>
+        {% if form.errors %}
+        {{ form.errors }}
+        {{ form.non_field_errors }}
+    <!-- {% for field in form %}
+        {% for error in field.errors %}
+            <p> {{ error }} </p>
+        {% endfor %}
+    {% endfor %}
+{% endif %} -->
+    </div>
+{% endblock content %}
+    

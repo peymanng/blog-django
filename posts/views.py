@@ -1,8 +1,10 @@
 from django.shortcuts import get_object_or_404, redirect, render , get_list_or_404
-from .models import Category, Post , Comment
 from django.core.paginator import Paginator
+from django.utils.text import slugify
+from .models import Category, Post , Comment
 from .forms import CommentForm
 from taggit.models import Tag
+from .forms import CreatePostForm
 # from django.views.decorators.http import require_safe
 # Create your views here.
 
@@ -89,3 +91,30 @@ def like(request , post_slug):
     else:
         post.likes.add(request.user)
     return redirect('post' , post=post_slug)
+
+def create_post(request):
+    if request.method == 'POST':
+        form = CreatePostForm(request.POST , request.FILES)
+        if form.is_valid():
+            print(form.cleaned_data['tags'])
+            slug = slugify(form.cleaned_data['title'] , allow_unicode=True)
+            category = form.cleaned_data['category'][0]
+            image = request.FILES['image']
+            post = Post.objects.create(
+                title =form.cleaned_data['title'],
+                slug = slug,
+                author = request.user,
+                description = form.cleaned_data['description'],
+                body = form.cleaned_data['body'],
+                image = image,
+            )
+            for i in form.cleaned_data['tags']:
+                post.tags.add(i)
+            post.category.add(category)
+            post.save()
+            return redirect('home')
+        else:
+            return render(request, "posts/create_post.html", {'form':form}) 
+        
+    form = CreatePostForm()        
+    return render(request , 'posts/create_post.html' , {'form' : form})
