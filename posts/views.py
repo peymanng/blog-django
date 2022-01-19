@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404, redirect, render , get_list_or_404
 from django.core.paginator import Paginator
 from django.utils.text import slugify
+from django.contrib.auth.decorators import login_required
+from taggit.models import Tag
 from .models import Category, Post , Comment
 from .forms import CommentForm
-from taggit.models import Tag
 from .forms import CreatePostForm
 # from django.views.decorators.http import require_safe
 # Create your views here.
@@ -92,6 +93,7 @@ def like(request , post_slug):
         post.likes.add(request.user)
     return redirect('post' , post=post_slug)
 
+@login_required
 def create_post(request):
     if request.method == 'POST':
         form = CreatePostForm(request.POST , request.FILES)
