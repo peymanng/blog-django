@@ -1,5 +1,5 @@
 # blog-django
-blog project with django **http://blogtest-peymangolkar.fandogh.cloud/**
+blog project with django **http://peymangol.pythonanywhere.com/**
 
 ## features
 - view counter
@@ -8,7 +8,6 @@ blog project with django **http://blogtest-peymangolkar.fandogh.cloud/**
 - likes
 - star rating
 - tags
-- search 
 
 ## framework and libraries
 - django
@@ -16,6 +15,8 @@ blog project with django **http://blogtest-peymangolkar.fandogh.cloud/**
 - django-jazzminn
 - django-star-ratings
 - django-taggit
+- django-recaptcha
+- django-ckeditor
 - Bootstrap
 
 
@@ -23,7 +24,5 @@ blog project with django **http://blogtest-peymangolkar.fandogh.cloud/**
 ![Home _ PeymanGolkar](https://user-images.githubusercontent.com/85928258/146726206-8c2ebd40-7a04-464b-8569-6a84c04f15c9.png)
 <hr/>
 
-![posts _ PeymanGolkar](https://user-images.githubusercontent.com/85928258/146726410-388d8820-00dc-438a-826f-f40b692280a8.png)
-<hr/>
-
-![django _ PeymanGolkar](https://user-images.githubusercontent.com/85928258/146726801-f5e6c1cf-c2ce-443e-b76e-576f900390bf.png)
+![posts _ PeymanGolkar](https://user-images.githubusercontent.com/85928258/150574865-a483f1a1-5da1-4102-aa5c-f175cdb459e8.png)
+![php programming language _ PeymanGolkar](https://user-images.githubusercontent.com/85928258/150574915-53723993-fde5-4e90-b94c-c468d06561bd.png)
